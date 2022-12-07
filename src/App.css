@@ -1,20 +1,28 @@
-
 .titulo {
   color:aliceblue;
   background-color: rgb(164, 16, 201);
 }
 
 header {
+
+  padding: 1px;
+  margin: 1px;
   background-color: rgb(164, 16, 201); 
+}
+
+
+link{
+  text-decoration: none;
+  color:rgb(164, 16, 201); 
 }
 
 a{
   text-decoration: none;
-  color: aliceblue;
+  color: rgb(189, 191, 192);
 }
 
 .estilo {
-  background-color: beige;
+  background-color: rgb(233, 233, 211);
   text-shadow: 1em;
   margin: 5px;
   padding: 5px;
@@ -22,3 +30,54 @@ a{
   font-style: oblique;
   
 }
+
+.card {
+  display: inline-block;
+ 
+  width:300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid;
+  padding: 20px;
+  transition: background-color .3s, color .3s;
+ 
+}
+.card__img {
+  overflow: hidden;
+}
+
+.card__meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.card:hover {
+  background-color: rgb(164, 16, 201);
+  color: #fff;
+}
+.card:hover img {
+  scale: 1.4;
+}
+
+.card__img image {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: scale .3s;
+}
+
+
+
+.card2 {
+  display: inline-block;
+ 
+  width:300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid;
+  padding: 20px;
+  transition: background-color .3s, color .3s;
+ 
+}
+
+
