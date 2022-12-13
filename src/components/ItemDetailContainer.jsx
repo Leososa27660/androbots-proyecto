@@ -2,23 +2,34 @@ import {useState, useEffect} from "react"
 import { customFetch } from "../utils/customFetch";
 import { products } from "../utils/products";
 import ItemDetail from './ItemDetail'
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
+
 
 const ItemDetailContainer = () => {
     const [dato, setDato] = useState({});
-    const { idProducto } = useParams(5);
+    const { idProducto } = useParams();
 
     useEffect(() => {
-        customFetch(2000, products.filter(item => item.id == idProducto))
-            .then(resuelve => setDato(resuelve))
-            .catch(err => console.log(err))
-    },[])
+        if(idProducto){
 
+            customFetch(2000, products.find(item => item.id === parseInt(idProducto)))
+            .then(result => setDato(result))
+            .catch(err => console.log(err))
+
+        }
+        else{
+            customFetch(2000, products)
+            .then(result => setDato(result))
+            .catch(err => console.log(err))
+        }
+       
+
+       
+    }, [idProducto]);
+    
     return (
         <ItemDetail item={dato} />
     );
-
 }
-   
 
-export default ItemDetailContainer
+export default ItemDetailContainer;

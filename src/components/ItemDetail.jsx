@@ -1,49 +1,77 @@
-import {Link} from 'react-router-dom';
 
-const ItemDetail = (props) => {
-   return (
-     <>
-       <Link to={'/androbots-proyecto/item/:idProducto'}>
-     <div className="card2" >
-        
-    
-     {props.nombre}
-        
-        <div className="card_img">
-        <img src= {props.imagen} width="250px"/>  
-        {props.descripcion}
-        
-        <div className="card__meta">
 
-        <div className="card_img">
-        <img src= {props.imagen} width="250px"/>  
-        {props.descripcion}
-      </div>    
-      <span className="card__category">カテゴリー1</span>
-      <span className="card__year">2022</span>
-     </div>
+import React from 'react'
+import {useState} from 'react'
 
-     <div class="card-body">
-    <h5 class="card-title">Detalles</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">$</li>
+
+const ItemDetail = ({item}) => {
+
+
   
-  </ul>
-         </div>      
-         </div>
+const [count, setCount,] = useState (1);
+
+const decrement = () => {
+
+  setCount(count -1); 
+}
+ 
+const increment = () => {
+
+  setCount(count +1); 
+}
+
+const onAdd = (quantity) => {
+  alert(`Compraste ${quantity} unidades`)
+}
+
+
+  return (
+      <>
+      {
+       
+          <div className="card" >
+            {item.nombre}  
+          <div className="card__meta">
+            
+          <div className="card_img">
+          <img  src={item.imagen}  width="500px"/>  
          
-         </Link>
+        </div>    
       
+        <span className="card__category">ロボット</span>
+        <span className="card__year">2022</span>
+        
+       </div>
+      
+       <div class="card-body">
+       
+      <h5 class="card-title">Descripción</h5>
+
+      <p class="card-text"> {item.descripcion}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">{item.precio}</li>
+      
+      </ul>
+        <hr />
+
+      <div className="contador">
+        <button disabled={count <=0} onClick={decrement}>-</button>
+        <span>{count}</span>
+        <button disabled={count >=3} onClick={increment}>+</button>
+      </div>
+      <div>
+        <button disabled={count <=0} onClick={() => onAdd(count)} >Agregar al carrito</button>
+      </div>
+           </div> 
+       
+      }
       </>
-      
-   )
- }
+  );
+}
 
-
-export default ItemDetail
-
+export default ItemDetail;
 
 
 
+ 

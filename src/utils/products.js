@@ -25,9 +25,9 @@ export const products = [
 {
   id:3,
   nombre:"Robot003",
-  descripcion: "Lorem ipsum dolor sit amet.",
+  descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae condimentum velit, quis volutpat dolor. Donec dapibus nulla ac ex pharetra.",
   imagen: [
-    "https://www.65ymas.com/uploads/s1/54/09/24/captura-de-pantalla-2021-02-24-a-las-13-04-28_1_621x621.png"
+    "https://www.clarin.com/img/2021/03/10/9Qk35IAMF_1256x620__1.jpg"
   ],
   categoryId:"robots",
   precio:"$10000"

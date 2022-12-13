@@ -1,28 +1,29 @@
 import {Link} from 'react-router-dom';
 
 
-const Item = (props) => {
+const Item = (item) => {
   return (
     
-   
 
-    <Link to={'/androbots-proyecto/item/:idProducto'}>
     <div className="card" >
-        {props.nombre}
-        {props.id}
-        <div className="card_img">
-        <img src= {props.imagen} width="250px"/>  
-        {props.descripcion}
+        {item.nombre}
+        {item.id}
         
+        <div className="card_img">
+        <img src= {item.imagen} width="250px"/>  
+        {item.descripcion}
+      
         <div className="card__meta">
-      <span className="card__category">カテゴリー1</span>
+          
+      <span className="card__category">ロボット</span>
       <span className="card__year">2022</span>
       
-   <button>Detalles</button> 
+      
+   <Link to={`/androbots-proyecto/item/${item.id}`}><button>Detalle</button></Link>
     </div>
         </div>      
         </div>
-        </Link>
+        
   )
 }
 
