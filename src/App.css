@@ -42,6 +42,21 @@ a{
   transition: background-color .3s, color .3s;
  
 }
+
+.hr1 {border: 1px dashed grey; height: 0; width: 60%;}
+
+.card2 {
+  display: inline-block;
+  
+  width:300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid;
+  padding: 20px;
+  transition: background-color .3s, color .3s;
+ 
+}
+
 .card__img {
   overflow: hidden;
     
@@ -67,18 +82,5 @@ a{
   transition: scale .3s;
 }
 
-
-
-.card2 {
-  display: inline-block;
- 
-  width:300px;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid;
-  padding: 20px;
-  transition: background-color .3s, color .3s;
- 
-}
 
 

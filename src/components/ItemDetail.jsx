@@ -1,77 +1,75 @@
+import {useState, useContext, React} from "react";
+import Swal from "sweetalert2";
+import { CartContext } from "./CartContext";
+import { Link } from "react-router-dom";
 
-
-import React from 'react'
-import {useState} from 'react'
-
-
-const ItemDetail = ({item}) => {
-
+export const ItemDetail = ({item}) => {
+  const [goToCart, setCountCart ] = useState(false);
+  const [count, setCount,] = useState (0);
+  const {addToCart} = useContext(CartContext);
 
   
-const [count, setCount,] = useState (1);
+const onAdd = (quantity) => {
+  setCountCart(true);
+  addToCart(item, quantity);
+  Swal.fire({
+    title: `<h1>Compraste ${quantity} unidades</h1>`,
+    confirmButtonText:  `Aceptar`,
+});  
+}
 
 const decrement = () => {
-
   setCount(count -1); 
 }
  
 const increment = () => {
-
   setCount(count +1); 
 }
 
-const onAdd = (quantity) => {
-  alert(`Compraste ${quantity} unidades`)
-}
+return (
+  <>
+  {
+      <div className="card" >
+        <>{item.nombre}</>
+          <div className="card__meta">     
+      <div className="card_img">
+        <img  src={item.imagen}  width="500px"/>  
+          </div>    
+  
+    <span className="card__category">ロボット</span>
+    <span className="card__year">2022</span>
+    
+   </div>
+  
+   <div className="card-body">
+    <h5 className="card-title">Descripción</h5>
+    <p className="card-text"> {item.descripcion}</p>
+    <h4> Stock: {item.stock}</h4>
+    </div>
+    <ul className="list-group list-group-flush">
+    <li className="list-group-item">{item.precio}</li>
+    </ul>
+    <hr />
 
+    <div className="contador">
+    <button disabled={count <=0} onClick={decrement}>-</button>
+    <span>{count}</span>
+    <button disabled={count >=3} onClick={increment}>+</button>
 
-  return (
+   {
+    goToCart
+    ? <Link to = '/androbots-proyecto/cart' ><button variant="contained" color="secondary">Terminar Compra</button></Link> 
+    :
+    <button disabled={count <=0} onClick={() => onAdd(count)} >Agregar al carrito</button>
+   }
+   
       <>
-      {
-       
-          <div className="card" >
-            {item.nombre}  
-          <div className="card__meta">
-            
-          <div className="card_img">
-          <img  src={item.imagen}  width="500px"/>  
-         
-        </div>    
-      
-        <span className="card__category">ロボット</span>
-        <span className="card__year">2022</span>
-        
-       </div>
-      
-       <div class="card-body">
-       
-      <h5 class="card-title">Descripción</h5>
-
-      <p class="card-text"> {item.descripcion}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-      <li class="list-group-item">{item.precio}</li>
-      
-      </ul>
-        <hr />
-
-      <div className="contador">
-        <button disabled={count <=0} onClick={decrement}>-</button>
-        <span>{count}</span>
-        <button disabled={count >=3} onClick={increment}>+</button>
-      </div>
-      <div>
-        <button disabled={count <=0} onClick={() => onAdd(count)} >Agregar al carrito</button>
-      </div>
-           </div> 
-       
-      }
+        </>
+          </div>
+            </div> 
+    }
       </>
-  );
-}
+    );
+    }
 
 export default ItemDetail;
-
-
-
- 

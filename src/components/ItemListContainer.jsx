@@ -1,36 +1,28 @@
+import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
-import ItemList from './ItemList';
-import {products} from '../utils/products';
-import {customFetch} from "../utils/customFetch";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router";
+import { firestoreFetch } from "../utils/firestoreFetch"
 
-const ItemListContainer = () =>
-{
+
+const ItemListContainer = () => {
     const [datos, setDatos] = useState([]);
-    const { idCategory } = useParams ();
+    const { idCategory } = useParams();
 
-    
-
-    useEffect(() =>{
-        if(idCategory){
-            customFetch(2000, products.filter(item => item.categoryId === idCategory))
+    useEffect(() => {
+        firestoreFetch(idCategory)
             .then(result => setDatos(result))
-            .catch(err => console.log(err))
-        }
-        else{
-            customFetch(2000, products)
-            .then(result => setDatos(result))
-            .catch(err => console.log(err))
-        }
-       
+            .catch(err => console.log(err));
+    }, [idCategory]);
 
-    }, [idCategory])
+    useEffect(() => {
+        return (() => {
+            setDatos([]);
+        })
+    }, []);
 
     return (
-        <ItemList datos={datos}/>
-    )
-
-
+            <ItemList items={datos} />
+    );
 }
 
 export default ItemListContainer;
