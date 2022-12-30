@@ -11,6 +11,7 @@ En mi caso este proyecto es sobre productos tecnologicos que en un futuro seran 
 # Pre-requisitos
 En mi caso use Vite + React
 
+![20221230_132253](https://user-images.githubusercontent.com/93846246/210099859-313ea8f8-f825-43c1-a3eb-74ef6521f4b3.gif)
 
 
 
